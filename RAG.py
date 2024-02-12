@@ -63,7 +63,7 @@ async def main(message):
  sources=res["source_documents"]
 
  if sources:
-  answer+=f"\nSources: "+str(str(sources))
+  answer+=f"\nSources: "+"\n\n\n\n".join(str(source) for source in sources)
  else:
   answer+=f"\nNo Sources found"
 
