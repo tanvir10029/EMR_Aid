@@ -13,7 +13,7 @@ QA_CHAIN_PROMPT = hub.pull("rlm/rag-prompt-mistral")
 #load the LLM
 def load_llm():
  llm = Ollama(
- model="mistral",
+ model="medllama2",
  verbose=True,
  callback_manager=CallbackManager([StreamingStdOutCallbackHandler()]),
  )
@@ -63,7 +63,7 @@ async def main(message):
  sources=res["source_documents"]
 
  if sources:
-  answer+=f"\nSources: "+"\n\n\n\n".join(str(source) for source in sources)
+  answer+=f"\nSources: "+"\n\n\n\n".join(str(source).replace(".",".\n") for source in sources)
  else:
   answer+=f"\nNo Sources found"
 
